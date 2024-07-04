@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do List</h1>
+      <form
+        action="{{ url_for('add') }}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="text"
+          name="task"
+          placeholder="Enter a new task"
+          required
+        />
+        <input type="text" name="category" placeholder="Category" />
+        <input type="datetime-local" name="reminder" placeholder="Reminder" />
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <input type="file" name="file" />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="task-list">
+        {% for task in tasks %}
+        <li
+          id="task-{{ task.id }}"
+          class="{% if task.complete %}completed{% endif %}"
+          data-task-id="{{ task.id }}"
+        >
+          {{ task.task }} {% if task.category %} ({{ task.category }}) {% endif
+          %} {% if task.reminder %} (Reminder: {{ task.reminder }}) {% endif %}
+          {% if task.notes %} <br />Notes: {{ task.notes }} {% endif %} {% if
+          task.file %} <br /><a
+            href="{{ url_for('static', filename='uploads/' ~ task.file) }}"
+            target="_blank"
+            >View File</a
+          >
+          {% endif %}
+          <a href="{{ url_for('update', task_id=task.id) }}">✓</a>
+          <a href="{{ url_for('delete', task_id=task.id) }}">✗</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <footer>
+      <p>
+        Made by Adham Haitham |
+        <a href="https://github.com/adhamhaithameid" target="_blank">GitHub</a>
+      </p>
+    </footer>
+    <script>
+      $(function () {
+        $("#task-list").sortable({
+          update: function (event, ui) {
+            var sortedIDs = $("#task-list").sortable("toArray", {
+              attribute: "data-task-id",
+            });
+            $.post("/reorder", { sortedIDs: sortedIDs });
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
