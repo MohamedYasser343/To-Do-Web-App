@@ -1,75 +1,66 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List</title>
+    <title>Do-It ⚡️</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
+      href="{{ url_for('static', filename='css/styles.css') }}"
     />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1>To-Do List</h1>
-      <form
-        action="{{ url_for('add') }}"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <input
-          type="text"
-          name="task"
-          placeholder="Enter a new task"
-          required
-        />
-        <input type="text" name="category" placeholder="Category" />
-        <input type="datetime-local" name="reminder" placeholder="Reminder" />
-        <textarea name="notes" placeholder="Notes"></textarea>
-        <input type="file" name="file" />
-        <button type="submit">Add</button>
-      </form>
-      <ul id="task-list">
+      <h1>Do-It ⚡️</h1>
+      <p class="description">
+        A simple and user-friendly task manager to keep track of your to-dos.
+      </p>
+      <ul>
         {% for task in tasks %}
-        <li
-          id="task-{{ task.id }}"
-          class="{% if task.complete %}completed{% endif %}"
-          data-task-id="{{ task.id }}"
-        >
-          {{ task.task }} {% if task.category %} ({{ task.category }}) {% endif
-          %} {% if task.reminder %} (Reminder: {{ task.reminder }}) {% endif %}
-          {% if task.notes %} <br />Notes: {{ task.notes }} {% endif %} {% if
-          task.file %} <br /><a
-            href="{{ url_for('static', filename='uploads/' ~ task.file) }}"
-            target="_blank"
-            >View File</a
-          >
-          {% endif %}
-          <a href="{{ url_for('update', task_id=task.id) }}">✓</a>
-          <a href="{{ url_for('delete', task_id=task.id) }}">✗</a>
+        <li class="task {{ 'complete' if task.complete }}">
+          <div>
+            <span>{{ task.task }}</span>
+            <div>
+              <a
+                href="{{ url_for('update', task_id=task.id) }}"
+                class="complete-task"
+                >Complete</a
+              >
+              <a href="{{ url_for('delete', task_id=task.id) }}">Delete</a>
+            </div>
+          </div>
         </li>
         {% endfor %}
       </ul>
     </div>
     <footer>
-      <p>
-        Made by Adham Haitham |
-        <a href="https://github.com/adhamhaithameid" target="_blank">GitHub</a>
-      </p>
+      This web app is made by Adham Haitham.
+      <img
+        src="{{ url_for('static', filename='ghb.png') }}"
+        alt="GitHub"
+        id="github-icon"
+      />
     </footer>
-    <script>
-      $(function () {
-        $("#task-list").sortable({
-          update: function (event, ui) {
-            var sortedIDs = $("#task-list").sortable("toArray", {
-              attribute: "data-task-id",
-            });
-            $.post("/reorder", { sortedIDs: sortedIDs });
-          },
-        });
-      });
-    </script>
+    <div class="floating-button">+</div>
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Task</h2>
+        </div>
+        <form id="task-form" action="/add" method="POST">
+          <input type="text" name="task" placeholder="Task" required />
+          <input type="datetime-local" name="deadline" required />
+          <textarea
+            name="description"
+            placeholder="Description"
+            required
+          ></textarea>
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
+    </div>
+    <div class="theme-toggle">🌓</div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </body>
 </html>
