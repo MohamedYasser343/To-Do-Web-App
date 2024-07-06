@@ -33,7 +33,7 @@ To run Do-It locally, follow these steps:
    cd do-it
 2. **Build the Docker image:**
     ```bash
-    docker build -t do-it-app .
+    docker build -t do-it-app
     ```
 3. **Run the Docker Container:**
     ```bash
