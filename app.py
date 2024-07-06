@@ -57,11 +57,10 @@ def edit(task_id):
     task = Task.query.get_or_404(task_id)
     if request.method == 'POST':
         task.task = request.form['task']
-        deadline = request.form.get('deadline')
-        task.deadline = datetime.strptime(deadline, '%Y-%m-%dT%H:%M') if deadline else None
-        task.description = request.form.get('description', '')
+        task.deadline = datetime.strptime(request.form['deadline'], '%Y-%m-%dT%H:%M') if request.form['deadline'] else None
+        task.description = request.form['description']
         db.session.commit()
-        return redirect(url_for('index'))
+        return jsonify(message='Task updated successfully')
     return render_template('edit.html', task=task)
 
 if __name__ == '__main__':

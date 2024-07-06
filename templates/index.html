@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Do-It ⚡️</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
     <div class="container">
-      <h1>Do-It ⚡️</h1>
-      <p class="description">
-        A simple and user-friendly task manager to keep track of your to-dos.
-      </p>
-      <ul>
-        {% for task in tasks %}
-        <li class="task {{ 'complete' if task.complete }}">
-          <div>
-            <span>{{ task.task }}</span>
-            <div>
-              <a href="#" class="complete-task" data-id="{{ task.id }}"
-                >Complete</a
-              >
-              <a href="{{ url_for('edit', task_id=task.id) }}">Edit</a>
-              <a href="#" class="delete-task" data-id="{{ task.id }}">Delete</a>
+        <header>
+            <h1>Do-It ⚡️</h1>
+            <p class="description">A simple and user-friendly task manager to keep track of your to-dos.</p>
+        </header>
+        <main>
+            <ul class="task-list">
+                {% for task in tasks %}
+                <li class="task {{ 'complete' if task.complete }}">
+                    <div class="task-content">
+                        <span>{{ task.task }}</span>
+                        <div class="task-actions">
+                            <a href="#" class="complete-task" data-id="{{ task.id }}">Complete</a>
+                            <a href="{{ url_for('edit', task_id=task.id) }}">Edit</a>
+                            <a href="#" class="delete-task" data-id="{{ task.id }}">Delete</a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </main>
+    </div>
+    <div class="floating-button" onclick="toggleModal()">+</div>
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Task</h2>
             </div>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
+            <form id="task-form" action="/add" method="POST">
+                <label for="task">Task</label>
+                <input type="text" id="task" name="task" placeholder="Task" required>
+                <label for="deadline">Deadline</label>
+                <input type="datetime-local" id="deadline" name="deadline">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Description"></textarea>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
     </div>
     <footer>
-      <p>
-        Made by <a href="https://github.com/adhamhaithameid">Adham Haitham</a>
-      </p>
+        <p>✨ Made by <a href="https://github.com/adhamhaithameid">Adham Haitham</a> ✨</p>
     </footer>
-    <div class="floating-button" onclick="toggleModal()">+</div>
-    <div class="modal" id="task-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Add Task</h2>
-        </div>
-        <form id="task-form" action="/add" method="POST">
-          <input type="text" name="task" placeholder="Task" required />
-          <input type="datetime-local" name="deadline" />
-          <textarea name="description" placeholder="Description"></textarea>
-          <button type="submit">Add Task</button>
-        </form>
-      </div>
-    </div>
-    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-  </body>
+</body>
 </html>

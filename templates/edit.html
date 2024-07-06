@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Task - Do-It ⚡️</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Edit Task</title>
+</head>
+<body>
     <div class="container">
-      <h1>Edit Task</h1>
-      <form action="{{ url_for('edit', task_id=task.id) }}" method="POST">
-        <input
-          type="text"
-          name="task"
-          placeholder="Task"
-          value="{{ task.task }}"
-          required
-        />
-        <input
-          type="datetime-local"
-          name="deadline"
-          value="{{ task.deadline.strftime('%Y-%m-%dT%H:%M') if task.deadline }}"
-        />
-        <textarea name="description" placeholder="Description">
-{{ task.description }}</textarea
-        >
-        <button type="submit">Save Changes</button>
-      </form>
+        <header>
+            <h1>Edit Task</h1>
+        </header>
+        <main>
+            <form id="edit-task-form" class="modal-content" action="{{ url_for('edit', task_id=task.id) }}" method="POST">
+                <label for="task">Task</label>
+                <input type="text" id="task" name="task" value="{{ task.task }}" required>
+                <label for="deadline">Deadline</label>
+                <input type="datetime-local" id="deadline" name="deadline" value="{{ task.deadline.strftime('%Y-%m-%dT%H:%M') if task.deadline else '' }}">
+                <label for="description">Description</label>
+                <textarea id="description" name="description">{{ task.description }}</textarea>
+                <button type="submit">Save Task</button>
+            </form>
+        </main>
     </div>
-  </body>
+    <div class="floating-button" onclick="toggleModal()">+</div>
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
+    <footer>
+        <p>✨ Made by <a href="https://github.com/adhamhaithameid">Adham Haitham</a> ✨</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
 </html>
