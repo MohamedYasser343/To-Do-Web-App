@@ -29,7 +29,7 @@ To run Do-It locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/do-it.git
+   https://github.com/adhamhaithameid/Do-it.git
    cd do-it
 2. **Build the Docker image:**
     ```bash
