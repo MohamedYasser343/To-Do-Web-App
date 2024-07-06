@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function toggleTheme() {
       document.body.classList.toggle('dark-mode');
+      themeToggle.classList.toggle('rotated');
       localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
 
@@ -81,5 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
+      themeToggle.classList.add('rotated');
   }
 });
