@@ -1,8 +1,8 @@
 # Do-It ⚡️ - CS50x Final Project 2024
 
 <p float="left">
-  <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/ee23d8e3-bc89-44e7-8e3e-19871b5cc8d7" alt="Do-It App Screenshot" width="500" />
-  <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/c2b01685-4c17-4282-bcb0-a684b548c650" alt="Do-It App Screenshot" width="500" />
+  <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/ee23d8e3-bc89-44e7-8e3e-19871b5cc8d7" alt="Do-It App Screenshot" width="400" />
+  <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/c2b01685-4c17-4282-bcb0-a684b548c650" alt="Do-It App Screenshot" width="400" />
 </p>
 
 ## Overview
