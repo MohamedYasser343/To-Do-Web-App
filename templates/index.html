@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,12 +21,11 @@
           <div>
             <span>{{ task.task }}</span>
             <div>
-              <a
-                href="{{ url_for('update', task_id=task.id) }}"
-                class="complete-task"
+              <a href="#" class="complete-task" data-id="{{ task.id }}"
                 >Complete</a
               >
-              <a href="{{ url_for('delete', task_id=task.id) }}">Delete</a>
+              <a href="{{ url_for('edit', task_id=task.id) }}">Edit</a>
+              <a href="#" class="delete-task" data-id="{{ task.id }}">Delete</a>
             </div>
           </div>
         </li>
@@ -35,32 +33,25 @@
       </ul>
     </div>
     <footer>
-      This web app is made by Adham Haitham.
-      <img
-        src="{{ url_for('static', filename='ghb.png') }}"
-        alt="GitHub"
-        id="github-icon"
-      />
+      <p>
+        Made by <a href="https://github.com/adhamhaithameid">Adham Haitham</a>
+      </p>
     </footer>
-    <div class="floating-button">+</div>
-    <div class="modal">
+    <div class="floating-button" onclick="toggleModal()">+</div>
+    <div class="modal" id="task-modal">
       <div class="modal-content">
         <div class="modal-header">
           <h2>Add Task</h2>
         </div>
         <form id="task-form" action="/add" method="POST">
           <input type="text" name="task" placeholder="Task" required />
-          <input type="datetime-local" name="deadline" required />
-          <textarea
-            name="description"
-            placeholder="Description"
-            required
-          ></textarea>
+          <input type="datetime-local" name="deadline" />
+          <textarea name="description" placeholder="Description"></textarea>
           <button type="submit">Add Task</button>
         </form>
       </div>
     </div>
-    <div class="theme-toggle">🌓</div>
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </body>
 </html>
