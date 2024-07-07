@@ -1,7 +1,5 @@
 # Do-It ⚡️ - CS50x Final Project 2024
 
-Watch my [YouTube demo](https://youtu.be/i3d-CTnY4-k) to see Do-It ⚡️ in action!
-
 <p float="left">
   <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/ee23d8e3-bc89-44e7-8e3e-19871b5cc8d7" alt="Do-It App Screenshot" width="400" />
   <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/c2b01685-4c17-4282-bcb0-a684b548c650" alt="Do-It App Screenshot" width="400" />
@@ -51,6 +49,9 @@ Editing a Task: Click on "Edit" next to a task, modify the details, and click "S
 Completing a Task: Click on "Complete" next to a task to mark it as complete.
 Deleting a Task: Click on "Delete" next to a task to remove it.
 
-Demo Video
+## Demo Video
 
 Watch my [YouTube demo](https://youtu.be/i3d-CTnY4-k) to see Do-It ⚡️ in action!
+
+## My CS50x Certificate 🥳
+<img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/d40cc678-4ebb-44f5-b5fd-bca3fb08563f" alt="Do-It App Screenshot" width="800" />
