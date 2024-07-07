@@ -51,4 +51,4 @@ Deleting a Task: Click on "Delete" next to a task to remove it.
 
 Demo Video
 
-Watch our [YouTube demo](https://www.youtube.com/watch?v=your-video-id) to see Do-It ⚡️ in action!
+Watch my [YouTube demo](https://youtu.be/i3d-CTnY4-k) to see Do-It ⚡️ in action!
