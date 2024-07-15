@@ -53,5 +53,9 @@ Deleting a Task: Click on "Delete" next to a task to remove it.
 
 Watch my [YouTube demo](https://youtu.be/i3d-CTnY4-k) to see Do-It ⚡️ in action!
 
-## My CS50x Certificate 🥳
+## My CS50x Certificate 🥳🎓
 <img src="https://github.com/adhamhaithameid/Do-it/assets/154730935/d40cc678-4ebb-44f5-b5fd-bca3fb08563f" alt="Do-It App Screenshot" width="800" />
+
+
+## My edX Certificate 🥳🎓
+<img src="https://github.com/user-attachments/assets/f646e52b-579c-4b8b-b29e-3d96709232a7" alt="Do-It App Screenshot" width="800" />
